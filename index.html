@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Tester Project</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position:relative;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reaction Tester Project</h1>
+    <p>Click on the box as soon as you can</p>
+    <div id="box"></div>
+   <script>
+    var start=new Date().getTime();
+    function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+    function move() {
+        var val1 = (Math.random() * 300);
+        var val2 =(Math.random() * 300);
+        var val3 = ((Math.random() * 400)+100);
+        document.getElementById("box").style.left= val1 + "px";
+        document.getElementById("box").style.top = val2 + "px";
+        document.getElementById("box").style.width = val3 + "px";
+        document.getElementById("box").style.height = val3 + "px";
+        document.getElementById("box").style.display="block";
+        document.getElementById("box").style.backgroundColor=getRandomColor();
+        start=new Date().getTime();
+    }
+    move();
+    document.getElementById("box").onclick=function(){
+        document.getElementById("box").style.display="none";
+        var end=new Date().getTime();
+        var userTime=(end-start)/1000;
+        alert(userTime);
+        move();
+    }
+   </script>
+</body>
+</html>
